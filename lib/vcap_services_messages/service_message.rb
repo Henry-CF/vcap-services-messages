@@ -110,4 +110,18 @@ module VCAP::Services::Internal
     optional :properties,           Hash
     optional :error
   end
+
+  # SC -> Provisioner -> Node
+  class PerformOperationRequest < ServiceMessage
+    required :args,      Hash
+  end
+
+  # Node -> Provisioner -> SC
+  class PerformOperationResponse < ServiceMessage
+    required :result
+    required :code,       String
+    required :properties, Hash
+    required :body,       Hash
+  end
+
 end
