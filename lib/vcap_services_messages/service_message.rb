@@ -102,4 +102,12 @@ module VCAP::Services::Internal
     required :instance_id,          String
     required :heartbeat_time,       String
   end
+
+  class BackupJobResponse < ServiceMessage
+    required :success
+    required :backup_id,            String
+    required :status,               String
+    optional :properties,           Hash
+    optional :error
+  end
 end
