@@ -105,9 +105,7 @@ module VCAP::Services::Internal
 
   class BackupJobResponse < ServiceMessage
     required :success
-    required :backup_id,            String
-    required :status,               String
-    optional :properties,           Hash
+    required :properties,           Hash
     optional :error
   end
 
