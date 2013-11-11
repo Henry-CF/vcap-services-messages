@@ -21,3 +21,28 @@ describe "ServiceMessage" do
   end
 end
 
+module VCAP::Services::Internal
+  describe "ServiceRecipes" do
+    it "should validate configuration section" do
+      req = ServiceRecipes.new
+      req.credentials = {}
+      expect { req.configuration = [] }.to raise_error
+      expect { req.configuration = {} }.to raise_error
+      expect { req.configuration = {"peers" => []} }.to_not raise_error
+      expect { req.configuration = {"peers" => [{}]} }.to raise_error
+      expect { req.configuration = {"peers" => [ {"credentials" => {}} ]} }.to raise_error
+      expect do
+        req.configuration = {
+          "peers" => [
+            {
+              "credentials" => {
+                "node_id" => "node1",
+                "host" => "localhost"
+              }
+            }
+          ]
+        }
+      end.to_not raise_error
+    end
+  end
+end

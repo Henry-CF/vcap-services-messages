@@ -109,6 +109,21 @@ module VCAP::Services::Internal
     optional :error
   end
 
+  class ServiceRecipes < ServiceMessage
+    required :credentials,      Hash
+    required :configuration do
+      {
+        "peers" => [
+          {
+            "credentials" => {
+              "node_id" => String
+            }
+          }
+        ]
+      }
+    end
+  end
+
   # SC -> Provisioner -> Node
   class PerformOperationRequest < ServiceMessage
     required :args,      Hash
