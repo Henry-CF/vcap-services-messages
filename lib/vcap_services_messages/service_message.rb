@@ -137,4 +137,24 @@ module VCAP::Services::Internal
     required :body,       Hash
   end
 
+  # SC -> Provisioner
+  class GatewayProvisionRequest < ServiceMessage
+    required :unique_id, String
+    required :name,      String
+    optional :email,     String
+
+    optional :provider,          String
+    optional :label,             String
+    optional :plan,              String
+    optional :version,           String
+    optional :properties,        Hash
+  end
+
+  # Provisioner -> SC
+  class GatewayProvisionResponse < ServiceMessage
+    required :service_id, String
+    required :configuration
+    required :credentials
+    optional :status
+  end
 end
