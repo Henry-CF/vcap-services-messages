@@ -15,6 +15,7 @@ module VCAP::Services::Internal
     required :plan, String
     optional :credentials
     optional :version
+    optional :properties, Hash
   end
 
   # Node --> Provisioner
