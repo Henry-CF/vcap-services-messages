@@ -14,11 +14,13 @@ module VCAP::Services::Internal
 
   #Restoring a backup
   class ProvisionArguments < Enum
-    enum_with_value_for :username, "username"
-    enum_with_value_for :password, "password"
+    enum_with_value_for :credentials, "credentials"
 
+    # Additional arguments used during restore after provision
     enum_with_value_for :backup_id, "backup_id"
     enum_with_value_for :restore_from_url, "restore_from_url"
+    enum_with_value_for :original_service_id, "original_service_id"
+    enum_with_value_for :update_url, "update_url"
   end
 
   # BACKUP-specific constants
