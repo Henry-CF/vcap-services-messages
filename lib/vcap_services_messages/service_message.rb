@@ -140,10 +140,11 @@ module VCAP::Services::Internal
 
   # SC -> Provisioner
   class GatewayProvisionRequest < ServiceMessage
-    required :unique_id, String
-    required :name,      String
-    optional :email,     String
+    required :unique_id,   String
+    required :name,        String
 
+    optional :credentials,       Hash
+    optional :email,             String
     optional :provider,          String
     optional :label,             String
     optional :plan,              String
