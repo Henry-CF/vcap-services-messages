@@ -30,6 +30,17 @@ module VCAP::Services::Internal
     required :bindings, [Hash]
   end
 
+  class UpdateCredentialsRequest < ServiceMessage
+    required :name, String
+    required :old_credentials, Hash
+    required :new_credentials, Hash
+  end
+
+  class UpdateCredentialsResponse < ServiceMessage
+    required :success
+    optional :error
+  end
+
   class BindRequest < ServiceMessage
     required :name, String
     optional :bind_opts, Hash
