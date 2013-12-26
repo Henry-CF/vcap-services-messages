@@ -32,8 +32,7 @@ module VCAP::Services::Internal
 
   class UpdateCredentialsRequest < ServiceMessage
     required :name, String
-    required :old_credentials, Hash
-    required :new_credentials, Hash
+    required :credentials, Hash
   end
 
   class BindRequest < ServiceMessage
